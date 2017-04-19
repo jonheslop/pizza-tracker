@@ -5,12 +5,14 @@ const ORDERS_PER_PAGE = 4
 
 function OrderList ({ data: { allOrders, loading, _allOrdersMeta }, loadMoreOrders }) {
   if (allOrders && allOrders.length) {
-    const areMoreOrders = allOrders.length < _allOrdersMeta.count
+    const areMoreOrders = allOrders.length < _allOrdersMeta.count,
+    extra = { fontSize: '6rem'},
+    normal = { fontSize: '5rem'}
     return (
       <section>
         <ul className="list pa0 ma0 mt2">
           {allOrders.map((order, index) =>
-            <li key={order.id} className={`f-headline lh-solid tc mb4 fw8 o-` + (100 - index * 30)}>
+            <li key={order.id} className={`lh-solid tc mb4 fw8 o-` + (100 - index * 30)} style={index == 0 ? extra : normal}>
               {order.orderNumber}
             </li>
           )}
