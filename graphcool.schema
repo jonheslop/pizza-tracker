@@ -1,0 +1,26 @@
+# projectId: "cj1q8bz4f035z01276kvof8gs"
+
+type Order {
+  createdAt: DateTime!
+  id: ID!
+  orderNumber: Int!
+  orderStatus: String
+  updatedAt: DateTime!
+}
+
+type File {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  secret: String!
+  size: Int!
+  updatedAt: DateTime!
+  url: String!
+}
+
+type User {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+}
