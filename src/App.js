@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Tracker from './Tracker'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
 import {SubscriptionClient, addGraphQLSubscriptions} from 'subscriptions-transport-ws'
+import Route from './Route'
 
 
 // Create WebSocket client
@@ -30,7 +30,7 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <Tracker/>
+        <Route/>
       </ApolloProvider>
     )
   }
