@@ -8,7 +8,7 @@ class Order extends Component {
 
     return (
       <li
-          className={ this.props.status === 'pending' ? 'lh-solid tc mb4 fw8 red' : `lh-solid tc mb4 fw8` }
+          className={ this.props.status === 'pending' ? 'lh-solid tc mb4 fw8 o-20' : `lh-solid tc mb4 fw8` }
           style={this.props.index === 0 ? extra : normal}>
           {this.props.order}
       </li>

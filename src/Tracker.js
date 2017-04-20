@@ -34,7 +34,6 @@ class Tracker extends Component {
   }
 
   componentDidMount() {
-    // Subscribe to `CREATED`-mutations
     this.createOrderSubscription = this.props.allOrdersQuery.subscribeToMore({
       document: gql`
           subscription {
@@ -86,7 +85,7 @@ class Tracker extends Component {
       <main role="main" className="ph4">
         {/* <h1 className="f1">🍕  Your pizza is ready!</h1> */}
         <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
-    </main>
+      </main>
     )
   }
 
