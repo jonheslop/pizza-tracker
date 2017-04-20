@@ -4,14 +4,15 @@ class OrderInput extends Component {
 
   render() {
     return (
-      <div className='OrderInput'>
+      <div className="cf pb2 mv2 bb b--washed-green">
         <input
-          className='InputField'
-          placeholder='Enter your chat message...'
-          type='text'
-          value={this.props.message}
+          className="w-100 pa3 sans-serif f4 ba b--white"
+          placeholder="Enter order number..."
+          type="text"
+          pattern="\d*"
+          value={this.props.order}
           autoFocus={true}
-          onChange={(e) => this.props.onTextInput(e.target.value)}
+          onChange={(e) => this.props.onTextInput(parseInt(e.target.value, 10) || 0)}
           onKeyDown={(e) => {
             if (e.keyCode === 13) { // ENTER
               this.props.onSend()
@@ -27,7 +28,7 @@ class OrderInput extends Component {
 export default OrderInput
 
 OrderInput.propTypes = {
-  message: React.PropTypes.string.isRequired,
+  order: React.PropTypes.number,
   onTextInput: React.PropTypes.func.isRequired,
   onResetText: React.PropTypes.func.isRequired,
   onSend: React.PropTypes.func.isRequired,

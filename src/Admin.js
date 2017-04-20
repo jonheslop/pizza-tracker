@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import AdminOrders from './AdminOrders'
+import OrderInput from './OrderInput'
 import _ from 'lodash'
 
 const createOrder = gql`
@@ -30,7 +31,7 @@ const allOrders = gql`
 class Tracker extends Component {
 
   state = {
-    order: '',
+    order: 0
   }
 
   componentDidMount() {
@@ -85,6 +86,12 @@ class Tracker extends Component {
     return (
       <main role="main" className="ph4">
         {/* <h1 className="f1">🍕  Your pizza is ready!</h1> */}
+        <OrderInput
+          order={this.state.order}
+          onTextInput={(order) => this.setState({order})}
+          onResetText={() => this.setState({order: 0})}
+          onSend={this._onSend}
+        />
         <AdminOrders orders={this.props.allOrdersQuery.allOrders || []}/>
       </main>
     )
@@ -96,6 +103,15 @@ class Tracker extends Component {
     this.props.createOrderMutation({
       variables: {
         orderNumber: this.state.order
+      },
+      updateQueries: {
+        allOrders: (previousResult, { mutationResult }) => {
+          const newOrder = mutationResult.data.createOrder
+          return Object.assign({}, previousResult, {
+            // Append the new order
+            allOrders: [newOrder, ...previousResult.allOrders]
+          })
+        }
       }
     })
   }
