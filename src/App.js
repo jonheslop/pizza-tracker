@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Tracker from './Tracker'
 import ApolloClient, { createNetworkInterface } from 'apollo-client'
 import { ApolloProvider } from 'react-apollo'
-import generateStupidName from 'sillyname'
 import {SubscriptionClient, addGraphQLSubscriptions} from 'subscriptions-transport-ws'
 
 
@@ -27,25 +26,7 @@ const client = new ApolloClient({
 })
 
 
-const WORLDCHAT_USERNAME_KEY = 'WORLDCHAT_USERNAME'
-
 class App extends Component {
-
-  componentWillMount() {
-
-    // testing
-    // localStorage.removeItem(WORLDCHAT_USERNAME_KEY)
-
-    let name = localStorage.getItem(WORLDCHAT_USERNAME_KEY)
-    if (!Boolean(name)) {
-      name = generateStupidName()
-      console.log('No name in localStorage, generated new: ', name)
-      localStorage.setItem(WORLDCHAT_USERNAME_KEY, name)
-    }
-    console.log('Name in localStorage: ', name)
-
-  }
-
   render() {
     return (
       <ApolloProvider client={client}>
