@@ -79,7 +79,7 @@ class Tracker extends Component {
       console.log('orders',this.props.allOrdersQuery.allOrders)
     return (
       <main role="main" className="ph4">
-        <h1 className="f-subheadline">🍕  Your pizza is ready!</h1>
+        <h1 className="f4 tc tl-ns f-subheadline-ns">🍕  Your pizza is ready!</h1>
         <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
       </main>
     )
