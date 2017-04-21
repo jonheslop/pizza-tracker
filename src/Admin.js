@@ -74,7 +74,11 @@ class Tracker extends Component {
       },
       onError: (err) => console.error('subscription error',err)
     })
+  }
 
+  componentDidUpdate() {
+    const mostRecentOrder = this.props.allOrdersQuery.allOrders[0]
+      this.setState({order: mostRecentOrder.orderNumber + 1})
   }
 
   render() {
