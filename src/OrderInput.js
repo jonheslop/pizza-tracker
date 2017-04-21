@@ -6,7 +6,7 @@ class OrderInput extends Component {
     return (
       <div className="cf pb3 mv3 bb b--light-green">
         <input
-          className="fl w-70 pa3 sans-serif f4 ba b--light-gray bg-light-gray"
+          className="fl w-50 w-70-ns pa3 sans-serif f4 ba b--light-gray bg-light-gray br0"
           placeholder="Enter order number..."
           type="text"
           pattern="\d*"
@@ -26,7 +26,7 @@ class OrderInput extends Component {
             this.props.onSend()
             this.props.onResetText()
           }}
-          className="fl w-30 border-box pa3 f4 b sans-serif tracked ttu ba b--light-green bg-light-green pointer">
+          className="fl w-50 w-30-ns border-box pa3 f4 b sans-serif tracked ttu ba b--light-green bg-light-green pointer dim">
           Add 🍕
         </button>
       </div>
