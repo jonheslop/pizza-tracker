@@ -59,7 +59,7 @@ class Tracker extends Component {
               const orders = previousState.allOrders.concat([newOrder])
               console.log('orders',orders)
               return {
-                allOrder: orders,
+                allOrders: orders,
               }
           }
           else if (subscriptionData.data.Order.mutation === 'UPDATED') {
