@@ -51,13 +51,9 @@ class Tracker extends Component {
           }
       `,
       updateQuery: (previousState, {subscriptionData}) => {
-          console.log('mutation occured', subscriptionData.data.Order.mutation)
           if (subscriptionData.data.Order.mutation === 'CREATED') {
-              console.log('previousState', previousState)
               const newOrder = subscriptionData.data.Order.node
-              console.log('newOrder',newOrder)
               const orders = [newOrder].concat(previousState.allOrders)
-              console.log('orders',orders)
               return {
                 allOrders: orders,
               }
