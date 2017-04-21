@@ -76,15 +76,9 @@ class Tracker extends Component {
     })
   }
 
-  componentDidUpdate() {
-    const mostRecentOrder = this.props.allOrdersQuery.allOrders[0]
-      this.setState({order: mostRecentOrder.orderNumber + 1})
-  }
-
   render() {
     return (
       <main role="main" className="ph4">
-        {/* <h1 className="f1">🍕  Your pizza is ready!</h1> */}
         <OrderInput
           order={this.state.order}
           onTextInput={(order) => this.setState({order})}
