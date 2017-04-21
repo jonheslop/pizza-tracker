@@ -78,7 +78,7 @@ class Tracker extends Component {
 
   render() {
     return (
-      <main role="main" className="ph4">
+      <main role="main" className="ph3">
         <OrderInput
           order={this.state.order}
           onTextInput={(order) => this.setState({order})}
