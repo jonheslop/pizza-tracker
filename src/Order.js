@@ -3,13 +3,9 @@ import React, { Component} from 'react'
 class Order extends Component {
 
   render() {
-    const extra = { fontSize: '6rem'},
-    normal = { fontSize: '5rem'}
-
     return (
       <li
-          className={ this.props.status === 'pending' ? 'lh-solid tc mb4 fw8 o-20' : `lh-solid tc mb4 fw8` }
-          style={this.props.index === 0 ? extra : normal}>
+          className={ this.props.status === 'pending' ? 'dn' : `lh-solid tc mb4 fw8 f-headline` }>
           {this.props.order}
       </li>
     )

@@ -9,7 +9,6 @@ class Orders extends Component {
         {this.props.orders.map((order, index) => {
           return (<Order
             key={index}
-            index={index}
             order={order.orderNumber}
             status={order.orderStatus}
           />)

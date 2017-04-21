@@ -4,9 +4,9 @@ class OrderInput extends Component {
 
   render() {
     return (
-      <div className="cf pb2 mv2 bb b--washed-green">
+      <div className="cf pb3 mv3 bb b--light-green">
         <input
-          className="w-100 pa3 sans-serif f4 ba b--white"
+          className="fl w-70 pa3 sans-serif f4 ba b--light-gray bg-light-gray"
           placeholder="Enter order number..."
           type="text"
           pattern="\d*"
@@ -20,6 +20,15 @@ class OrderInput extends Component {
             }
           }}
         />
+        <button
+          type="submit"
+          onClick={(e) => {
+            this.props.onSend()
+            this.props.onResetText()
+          }}
+          className="fl w-30 border-box pa3 f4 b sans-serif tracked ttu ba b--light-green bg-light-green pointer">
+          Add 🍕
+        </button>
       </div>
     )
   }

@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import AdminOrders from './AdminOrders'
 import OrderInput from './OrderInput'
+import OrdersRemove from './OrdersRemove'
 import _ from 'lodash'
 
 const createOrder = gql`
@@ -27,11 +28,10 @@ const allOrders = gql`
     }
 `
 
-
 class Tracker extends Component {
 
   state = {
-    order: 0
+    order: 1
   }
 
   componentDidMount() {
@@ -53,13 +53,9 @@ class Tracker extends Component {
           }
       `,
       updateQuery: (previousState, {subscriptionData}) => {
-          console.log('mutation occured', subscriptionData.data.Order.mutation)
           if (subscriptionData.data.Order.mutation === 'CREATED') {
-              console.log('previousState', previousState)
               const newOrder = subscriptionData.data.Order.node
-              console.log('newOrder',newOrder)
               const orders = previousState.allOrders.concat([newOrder])
-              console.log('orders',orders)
               return {
                 allOrder: orders,
               }
@@ -82,17 +78,17 @@ class Tracker extends Component {
   }
 
   render() {
-      console.log('orders',this.props.allOrdersQuery.allOrders)
     return (
       <main role="main" className="ph4">
         {/* <h1 className="f1">🍕  Your pizza is ready!</h1> */}
         <OrderInput
           order={this.state.order}
           onTextInput={(order) => this.setState({order})}
-          onResetText={() => this.setState({order: 0})}
+          onResetText={(order) => this.setState({order: this.state.order + 1})}
           onSend={this._onSend}
         />
         <AdminOrders orders={this.props.allOrdersQuery.allOrders || []}/>
+        <OrdersRemove onDelete={this._onDelete}/>
       </main>
     )
   }

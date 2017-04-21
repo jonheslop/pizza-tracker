@@ -17,7 +17,7 @@ const createOrder = gql`
 
 const allOrders = gql`
     query allOrders {
-        allOrders(orderBy: createdAt_DESC, last: 100) {
+        allOrders(orderBy: createdAt_DESC, first: 100) {
             id
             orderNumber
             orderStatus
@@ -56,7 +56,7 @@ class Tracker extends Component {
               console.log('previousState', previousState)
               const newOrder = subscriptionData.data.Order.node
               console.log('newOrder',newOrder)
-              const orders = previousState.allOrders.concat([newOrder])
+              const orders = [newOrder].concat(previousState.allOrders)
               console.log('orders',orders)
               return {
                 allOrders: orders,
