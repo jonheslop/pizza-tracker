@@ -23,6 +23,9 @@ const allOrders = gql`
             orderNumber
             orderStatus
             createdAt
+        },
+        _allOrdersMeta {
+          count
         }
     }
 `
@@ -77,13 +80,22 @@ class Tracker extends Component {
   }
 
   render() {
-    return (
-      <main role="main" className="pa3">
-        <h1 className="f4 tc tl-ns f-subheadline-ns mt0">🍕  Your pizza is ready!</h1>
-        <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
-        <Link className="fixed right-1 bottom-1 link grow pr1 pt1" to="/admin">⚡️</Link>
-      </main>
-    )
+      if (this.props.allOrdersQuery._allOrdersMeta && this.props.allOrdersQuery._allOrdersMeta.count) {
+        return (
+          <main role="main" className="pa3">
+            <h1 className="f4 tc tl-ns f-subheadline-ns mt0">🍕  Your pizza is ready!</h1>
+            <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
+            <Link className="fixed right-1 bottom-1 link grow pr1 pt1" to="/admin">⚡️</Link>
+          </main>
+        )
+      } else {
+        return (
+          <main role="main" className="pa3">
+            <h1 className="f4 tc f-subheadline-ns mt0">🍕  Pizza is coming</h1>
+            <Link className="fixed right-1 bottom-1 link grow pr1 pt1" to="/admin">⚡️</Link>
+          </main>
+        )
+      }
   }
 
 
