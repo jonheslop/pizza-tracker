@@ -3,7 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import AdminOrders from './AdminOrders'
 import OrderInput from './OrderInput'
-import OrdersRemove from './OrdersRemove'
+import DeleteOrders from './DeleteOrders'
 import _ from 'lodash'
 
 const createOrder = gql`
@@ -85,8 +85,8 @@ class Tracker extends Component {
           onResetText={(order) => this.setState({order: this.state.order + 1})}
           onSend={this._onSend}
         />
-        <AdminOrders orders={this.props.allOrdersQuery.allOrders || []}/>
-        <OrdersRemove onDelete={this._onDelete}/>
+        <AdminOrders orders={this.props.allOrdersQuery.allOrders || []} />
+        <DeleteOrders orders={this.props.allOrdersQuery.allOrders || []} />
       </main>
     )
   }

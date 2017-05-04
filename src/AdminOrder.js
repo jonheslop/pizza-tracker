@@ -12,7 +12,7 @@ function AdminOrder ({ statusChange, orderNumber, orderStatus, id }) {
   }
 
   return (
-    <button onClick={() => handleStatus(id, orderStatus)} className={ orderStatus === 'pending' ? 'db w-100 pa3 mb3 ba b--near-white cf bg-near-white' : 'db w-100 pa3 mb3 ba b--near-black cf bg-light-green' }>
+    <button id={id} onClick={() => handleStatus(id, orderStatus)} className={ orderStatus === 'pending' ? 'db w-100 pa3 mb3 ba b--near-white cf bg-near-white' : 'db w-100 pa3 mb3 ba b--near-black cf bg-light-green' }>
       <strong className="f3 db">{orderNumber}</strong>
       <span className="">{orderStatus}</span>
     </button>
