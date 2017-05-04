@@ -81,22 +81,13 @@ class Tracker extends Component {
   }
 
   render() {
-      if (this.props.allOrdersQuery._allOrdersMeta && this.props.allOrdersQuery._allOrdersMeta.count) {
-        return (
-          <main role="main" className="pa3">
-            <h1 className="f4 tc f-subheadline-ns mt0"><img src={ logo } alt="Pizza Tipi logo" className="w2 h2 w4-ns h4-ns" /> Your pizza is ready!</h1>
-            <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
-            <Link className="fixed right-1 bottom-1 link white grow pr1 pt1" to="/admin">▼</Link>
-          </main>
-        )
-      } else {
-        return (
-          <main role="main" className="pa3">
-            <h1 className="f4 tc f-subheadline-ns mt0"><img src={ logo } alt="Pizza Tipi logo" className="w2 h2 w4-ns h4-ns" /> Pizza is coming</h1>
-            <Link className="fixed right-1 bottom-1 link white grow pr1 pt1" to="/admin">▼</Link>
-          </main>
-        )
-      }
+    return (
+      <main role="main" className="pa3">
+        <h1 className="f4 tc f-subheadline-ns mt0"><img src={ logo } alt="Pizza Tipi logo" className="w2 h2 w4-ns h4-ns" /> Your pizza is ready!</h1>
+        <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
+        <Link className="fixed right-1 bottom-1 link white grow pr1 pt1" to="/admin">▼</Link>
+      </main>
+    )
   }
 
 
