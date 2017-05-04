@@ -2,12 +2,12 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-function AdminOrder ({ upvote, orderNumber, orderStatus, id }) {
+function AdminOrder ({ statusChange, orderNumber, orderStatus, id }) {
   function handleStatus (id, status) {
     if (status === 'pending') {
-      upvote(id, 'complete')
+      statusChange(id, 'complete')
     } else {
-      upvote(id, 'pending')
+      statusChange(id, 'pending')
     }
   }
 
@@ -30,7 +30,7 @@ const changeStatus = gql`
 
 export default graphql(changeStatus, {
   props: ({ ownProps, mutate }) => ({
-    upvote: (id, orderStatus) => mutate({
+    statusChange: (id, orderStatus) => mutate({
       variables: { id, orderStatus },
       optimisticResponse: {
         updateOrder: {
