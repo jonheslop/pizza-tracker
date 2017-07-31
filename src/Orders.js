@@ -5,7 +5,7 @@ class Orders extends Component {
 
   render() {
     return (
-    <ul className="list pa0 ma0 mt2">
+    <ul className="list pa0 ma0">
         {this.props.orders.map((order, index) => {
           return (<Order
             key={index}

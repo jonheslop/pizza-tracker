@@ -4,7 +4,6 @@ import gql from 'graphql-tag'
 import Orders from './Orders'
 import _ from 'lodash'
 import { Link } from 'react-router-dom'
-import logo from './pizzatipi.png'
 
 const createOrder = gql`
     mutation createOrder($orderNumber: Int!) {
@@ -83,7 +82,6 @@ class Tracker extends Component {
   render() {
     return (
       <main role="main" className="pa3">
-        <h1 className="f4 tc f-subheadline-ns mt0"><img src={ logo } alt="Pizza Tipi logo" className="w2 h2 w4-ns h4-ns" /> Your pizza is ready!</h1>
         <Orders orders={this.props.allOrdersQuery.allOrders || []}/>
         <Link className="fixed right-1 bottom-1 link white grow pr1 pt1" to="/admin">▼</Link>
       </main>
