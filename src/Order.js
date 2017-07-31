@@ -7,7 +7,7 @@ class Order extends Component {
     return (
       <li
           className={ this.props.status === 'pending' ? 'dn' : `lh-title tc mb5 fw8 f1 f-headline-ns flash w-100 vh-100 dt` }>
-          <span className="dtc v-mid" style={{fontSize: '2em'}}>{this.props.order}</span>
+          <span className="dtc v-mid" style={{fontSize: '4em'}}>{this.props.order}</span>
       </li>
     )
   }
